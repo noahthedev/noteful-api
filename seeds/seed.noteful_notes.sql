@@ -1,3 +1,3 @@
-INSERT INTO noteful_notes (
-  
-)
+INSERT INTO noteful_notes (id, title, content, folder_id)
+VALUES 
+  (1, 'first note', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?', 1)
