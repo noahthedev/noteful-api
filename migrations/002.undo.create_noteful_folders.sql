@@ -1,1 +1,0 @@
-DROP TABLE noteful_folders;
