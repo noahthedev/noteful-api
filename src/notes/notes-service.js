@@ -1,3 +1,0 @@
-const notesService = {
-  get
-}
