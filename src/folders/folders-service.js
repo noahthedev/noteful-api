@@ -14,8 +14,8 @@ const FoldersService = {
   getById(knex, id) {
     return knex.from('noteful_folders').select('*').where('id', id).first()
   },
-  deleteArticle(knex, id) {
-    return knex('blogful_articles')
+  deleteFolder(knex, id) {
+    return knex('noteful_folders')
       .where({ id })
       .delete()
   }
