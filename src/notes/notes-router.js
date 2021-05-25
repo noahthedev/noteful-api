@@ -23,5 +23,20 @@ notesRouter
       })
       .catch(next)
   })
+  .post(jsonParser, (req, res, next) => {
+    const { title, content, folder_id } = req.body
+    const newNote = { title, content, folder_id }
+
+    NotesService.insertNote(
+      req.app.get('db'), newNote
+    )
+      .then(note => {
+        res
+          .status(201)
+          .location(path.posix.join(req.originalUrl, `${note.id}`))
+          .json(serializeNote(note))
+      })
+      .catch(next)
+  })
 
 module.exports = notesRouter
