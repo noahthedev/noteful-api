@@ -21,6 +21,22 @@ foldersRouter
       })
       .catch(next)
   })
+  .post(jsonParser, (req, res, next) => {
+    const { title } = req.body
+    const newFolder = { title }
+
+    FoldersService.insertFolder(
+      req.app.get('db'),
+      newFolder
+    )
+      .then(folder => {
+        res
+          .status(201)
+          .location(path.posix.join(req.originalUrl, `/${folder.id}`))
+          .json(serializeFolder(folder))
+      })
+      .catch(next)
+  })
 
 module.exports = foldersRouter  
 
