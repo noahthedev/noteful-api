@@ -10,6 +10,14 @@ const FoldersService = {
       .then(rows => {
         return rows[0]
       })
+  },
+  getById(knex, id) {
+    return knex.from('noteful_folders').select('*').where('id', id).first()
+  },
+  deleteArticle(knex, id) {
+    return knex('blogful_articles')
+      .where({ id })
+      .delete()
   }
 }
 
