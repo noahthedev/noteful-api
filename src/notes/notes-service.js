@@ -1,15 +1,6 @@
 const NotesService = {
   getAllNotes(knex) {
-
-  },
-  insertNote(knex, newArticle) {
-
-  },
-  getById(knex, id) {
-
-  },
-  deleteNote(knex, id) {
-
+    return knex.select('*').from('noteful_notes')
   }
 }
 

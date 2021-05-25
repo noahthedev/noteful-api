@@ -2,7 +2,7 @@ const path = require('path')
 const express = require('express')
 const NotesService = require('./notes-service')
 
-const NotesRouter = express.Router()
+const notesRouter = express.Router()
 const jsonParser = express.json()
 
 const serializeNote = note => ({
@@ -19,7 +19,9 @@ notesRouter
     const knexInstance = req.app.get('db')
     NotesService.getAllNotes(knexInstance)
       .then(notes => {
-        res.json(articles.map(serializeNote))
+        res.json(notes.map(serializeNote))
       })
       .catch(next)
   })
+
+module.exports = notesRouter
