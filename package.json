@@ -8,10 +8,11 @@
     "dev": "nodemon src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
-    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
+    "migrate:production": "heroku run npm run migrate",
     "start": "node src/server.js",
     "predeploy": "npm audit && npm run migrate:production",
-    "deploy": "git push heroku main"
+    "deploy": "git push heroku main",
+    "postdeploy": "npm run migrate:production"
   },
   "keywords": [],
   "author": "Noah Roberts",
@@ -23,7 +24,7 @@
     "helmet": "^4.5.0",
     "knex": "^0.95.6",
     "morgan": "^1.10.0",
-    "pg": "7.17.0",
+    "pg": "^8.6.0",
     "postgrator-cli": "^4.0.0"
   },
   "devDependencies": {
