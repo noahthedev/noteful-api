@@ -26,8 +26,7 @@ foldersRouter
     const newFolder = { title }
 
     FoldersService.insertFolder(
-      req.app.get('db'),
-      newFolder
+      req.app.get('db'), newFolder
     )
       .then(folder => {
         res

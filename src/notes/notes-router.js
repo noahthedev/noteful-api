@@ -9,8 +9,8 @@ const serializeNote = note => ({
   id: note.id,
   title: note.title,
   content: note.content,
-  date_created: note.date_created,
-  folder_id: note.folder_id
+  modified: note.modified,
+  folderid: note.folderid
 })
 
 notesRouter
@@ -24,8 +24,8 @@ notesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { title, content, folder_id } = req.body
-    const newNote = { title, content, folder_id }
+    const { title, content, folderid } = req.body
+    const newNote = { title, content, folderid }
 
     NotesService.insertNote(
       req.app.get('db'), newNote
@@ -65,9 +65,7 @@ notesRouter
       req.app.get('db'),
       req.params.note_id
     )
-      .then(numRowsAffected => {
-        res.status(204).end()
-      })
+      .then(res.status(204).end())
       .catch(next)
   })
 
